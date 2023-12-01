@@ -69,7 +69,7 @@ export const mainStyles = {
     flexDirection: "column",
     alignItems: "center",
     maxWidth: "400px",
-    marginBottom: "10rem",
+    marginBottom: "1rem",
     padding: "1rem",
     borderRadius: "8px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

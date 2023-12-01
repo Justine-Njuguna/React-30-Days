@@ -10,6 +10,7 @@ import { mainStyles, newsLetter, logoStyle, formDesign, inputStyle, subscribeBut
 const main = (
   <main style={mainStyles}>
     <header>
+      <h1>30 DAYS OF REACT | DAY 1/30 :)</h1>
       <h3>Front end Technologies</h3>
     </header>
     <div>
