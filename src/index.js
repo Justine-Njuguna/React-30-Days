@@ -1,11 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import htmlLogo from './images/HTML.png'
 import cssLogo from './images/CSS.jpeg'
 import jsLogo from "./images/Js.png"
 import reactLogo from "./images/logo.svg"
+import checkMark from "./images/checkmark.png"
 import aeldraUser from "./images/Aeldra.jpg"
 import { colorContainer, colorText, colorBox, mainStyles, headerStyles, newsLetter, logoStyle, formDesign, inputStyle, subscribeButton, userCard, userDetails, userImage, imgStyle, skills, skillItem, skillList, footerStyles } from "./exercises/Day_1/styles";
+
+//state for hover effect
+const CustomInput = ({ placeholder }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <input
+      type="text"
+      placeholder={placeholder}
+      style={{
+        ...inputStyle,
+        borderBottom: isHovered ? '5px solid #518cef' : '2px solid lightblue',
+        marginBottom: isHovered ? '20px' : '10px', // Adjusted margin for hover effect
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    />
+  );
+};
+
+const checkmarkIcon = (
+  <img
+    src={checkMark}
+    alt="verified"
+    style={{ width: '25px', height: 'auto', verticalAlign: 'middle',marginRight: '5px', marginLeft: '5px' }}
+  />
+)
 
 const calculateRemainingDays = () => {
   const currentDate = new Date();
@@ -25,7 +53,7 @@ const today = new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'l
 
 // Logo component
 const Logo = ({ src, alt }) => (
-  <img src={src} alt={alt} style={logoStyle} />
+  <img src={src} alt={alt} style={{...logoStyle, margin: '0 10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'}} />
 )
 
 // Hex Color Generator component
@@ -53,18 +81,21 @@ const Header = () => (
   </header>
 );
 
-// UserCard component
+// Updated UserCard component
 const UserCard = () => (
   <div style={userCard}>
     <div style={userImage}>
       <img src={aeldraUser} alt="user profile" style={imgStyle} />
     </div>
     <div style={userDetails}>
-      <h2>Justine Aeldra</h2>
-      <p>Front-end Developer, Mombasa</p>
+      <h2 style={{ display: 'flex', alignItems: 'center' }}>
+        Justine Aeldra
+        {checkmarkIcon}  
+      </h2>
+      <p style={{ marginBottom: '15px', color: '#555' }}>Front-end Developer, Mombasa</p>
     </div>
     <div style={skills}>
-      <h2>SKILLS</h2>
+      <h2 style={{ marginBottom: '10px' }}>SKILLS</h2>
       <ul style={skillList}>
         <li style={skillItem}>HTML</li>
         <li style={skillItem}>CSS</li>
@@ -81,6 +112,7 @@ const UserCard = () => (
 
 
 
+
 // Main component
 const Main = () => (
   <main style={mainStyles}>
@@ -92,14 +124,14 @@ const Main = () => (
       <Logo src={reactLogo} alt="react logo" />
     </div>
     <div style={newsLetter}>
-      <h1>SUBSCRIBE</h1>
-      <p>Sign up with your email address to receive news and updates.</p>
-      <form style={formDesign}>
-        <input type="email" placeholder="Enter your email" style={inputStyle}/>
-        <input type="text" placeholder="Enter your first name" style={inputStyle} />
-        <input type="text" placeholder="Enter your last name" style={inputStyle}/>
-        <button style={subscribeButton}>Subscribe</button>
-      </form>
+      <h1 style={{ marginBottom: '10px' }}>SUBSCRIBE</h1>
+      <p style={{ marginBottom: '20px' }}>Sign up with your email address to receive news and updates.</p>
+        <form style={formDesign}>
+          <CustomInput placeholder="Enter your email" />
+          <CustomInput placeholder="Enter your first name" />
+          <CustomInput placeholder="Enter your last name" />
+          <button style={ subscribeButton}>Subscribe</button>
+        </form>
     </div>
     <HexColorGenerator colors={["#518cef", "#3b10c4", "#9aede6", "#8ee763", "#a30dd0"]} />
   </main>

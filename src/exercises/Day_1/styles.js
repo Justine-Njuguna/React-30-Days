@@ -40,6 +40,8 @@ export const mainStyles = {
     flexDirection: "column",
     gap: "1rem",
     padding: "1rem",
+    maxWidth: '300px',
+    margin: '0 auto',
   }
   
   export const subscribeButton = {
@@ -66,16 +68,22 @@ export const mainStyles = {
     },
   }
   
+  // In your styles.js
   export const inputStyle = {
     width: "100%",
     padding: "0.8rem",
     margin: "0.5rem 0",
     borderRadius: "4px",
     border: "none",
-    borderBottom: "2px solid lightblue", // You can adjust the border style
+    borderBottom: "2px solid lightblue", // Default border style
     outline: "none",
-  };
-  
+    transition: 'border-bottom 0.3s ease',
+
+    // New styles for hover/focus effect
+    ':hover, :focus': {
+      borderBottom: '2px solid #518cef', // Change the color as needed
+    },
+  }
   export const userCard = {
     display: "flex",
     flexDirection: "column",
