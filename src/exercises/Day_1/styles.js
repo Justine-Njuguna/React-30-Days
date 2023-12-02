@@ -1,3 +1,4 @@
+
 // main styles css
 export const mainStyles = {
     display: "flex",
@@ -7,7 +8,18 @@ export const mainStyles = {
     padding: "1rem",
     textAlign: "center",
     minHeight: "100vh", // Full viewport height
+    marginTop: "10rem",
   };
+
+  export const headerStyles  = {
+    position: "fixed",
+    top: "0",
+    width: "100%",
+    backgroundColor: "white",
+    padding: "1rem",
+    textAlign: "Center",
+    zIndex: 1,
+  }
   
   // Apply a common style for the logos
   export const logoStyle = {
@@ -121,3 +133,45 @@ export const mainStyles = {
     marginTop: "2rem", // Adjusted margin for separation
     borderTop: "1px solid #ccc", // Added a border at the top for separation
   };
+
+  //color generator
+  export const colorContainer = {
+    marginBottom: '15px',
+    textAlign: 'center',
+    width: '50%',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    borderRadius: '8px',
+    transition: '0.3s',
+    overflow: 'hidden',
+    cursor: 'pointer',
+    ':hover': {
+      boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)',
+    },
+    position: 'relative',
+  }
+
+  export const colorText = {
+    margin: '0',
+    color: '#ffffff',
+    padding: '10px',
+    fontFamily: 'Helvetica',
+    lineHeight: '1.5',
+    fontWeight: 'bold',
+    fontSize: '14px',
+    letterSpacing: '.7px',
+    // background: 'rgba(255, 255, 255, 0.8)',
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    width: '100%'
+  }
+
+  export const colorBox = {
+    height: '40px',
+    width: '100%',
+    borderRadius: '8px 8px 0 0',
+    transition: '0.3s',
+    ':hover': {
+      transform: 'scale(1.1)',
+    },
+  }
