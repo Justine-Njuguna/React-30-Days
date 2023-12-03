@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import htmlLogo from './images/HTML.png'
 import cssLogo from './images/CSS.jpeg'
@@ -72,14 +72,26 @@ const HexColorGenerator = ({ colors }) => {
   );
 }
 
-
 // Header component
-const Header = () => (
-  <header style={headerStyles}>
-    <h1>{`${remainingDays} DAYS OF REACT | Day ${30 - remainingDays + 1}/30 :) - ${today}`}</h1>
-    <h3>Front end Technologies</h3>
-  </header>
-);
+const Header = () => {
+  const [currentTime, setCurrentTime] = useState("");
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric' }));
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return (
+    <header style={headerStyles}>
+      <h1>{`${remainingDays} DAYS OF REACT | Day ${30 - remainingDays + 1}/30 :) - ${today}`} | Current Time: {currentTime} ({Intl.DateTimeFormat().resolvedOptions().timeZone})</h1>
+      <h3>React Js challenge</h3>
+    </header>
+  );
+};
 
 // Updated UserCard component
 const UserCard = () => (
@@ -108,10 +120,6 @@ const UserCard = () => (
     </div>
   </div>
 );
-
-
-
-
 
 // Main component
 const Main = () => (
