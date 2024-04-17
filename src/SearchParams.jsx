@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './style.css'
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
@@ -7,10 +8,10 @@ const SearchParams = () => {
     const [breed, setBreed] = useState("");
 
     // Adjusting the Breed variable to hold multiple breeds
-    const breeds = []; // Example breeds
+    const breeds = ["Poodle"]; // Example breeds
     
     return (
-        <div className="w-1/2 mt-10">
+        <div className="search-params">
             <form>
                 <label htmlFor="location">Location:</label>
                 <input
@@ -24,9 +25,10 @@ const SearchParams = () => {
                 <select
                     id="animal"
                     value={animal}
-                    onChange={(e) => setAnimal(e.target.value)}
-                    onBlur={(e) => setAnimal(e.target.value)}
-                    
+                    onChange={(e) => {
+                        setAnimal(e.target.value);
+                        setBreed("");
+                      }}                    
                 >
                     <option />
                     {ANIMALS.map((animal) => (
